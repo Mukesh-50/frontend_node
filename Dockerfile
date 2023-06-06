@@ -1,5 +1,5 @@
 #Make sure you point the ECR Image correctly
-FROM <YourAccountNo>.dkr.ecr.us-east-1.amazonaws.com/catalogapp:node14
+FROM node:14
 
 # Create app directory
 WORKDIR /usr/src/app
