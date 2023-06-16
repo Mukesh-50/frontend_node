@@ -6,6 +6,8 @@ const path = require("path");
 const Prometheus = require('prom-client')
 
 var AWSXRay = require('aws-xray-sdk');
+
+
 app.use(AWSXRay.express.openSegment('Frontend-Node'));
 
 Prometheus.collectDefaultMetrics();
