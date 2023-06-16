@@ -9,7 +9,7 @@ pipeline {
          steps {
            container('dind') {
             echo "Checking out Code Templates"
-            git branch: 'main', changelog: false, url: 'https://github.com/Mukesh-50/frontend_node.git'
+            git branch: 'master', changelog: false, url: 'https://github.com/Mukesh-50/frontend_node.git'
          }
         }
       }
