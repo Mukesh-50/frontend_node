@@ -5,17 +5,11 @@ pipeline {
     }
   }
   stages {
-    stage('Clone-frontend-Repo') {
-      steps {
-        container('dind') {
-    
-          sh '''
-          git clone https://github.com/Mukesh-50/frontend_node.git
-          echo "=========================="
-          echo "Building Docker Image"
-          pwd
-          ls
-          sh'''
+    stage('Checkout') {
+         steps {
+           container('dind') {
+            echo "Checking out Code Templates"
+            git branch: 'main', changelog: false, url: 'https://github.com/Mukesh-50/frontend_node.git'
          }
         }
       }
@@ -24,7 +18,9 @@ pipeline {
             container('dind') {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerhubpasswd', usernameVariable: 'dockerhubuser')]) { 
                 sh '''
-                cd frontend_node
+                pwd
+                ls
+                # cd frontend_node
                 docker build -t frontend:v1 .
                 docker tag frontend:v1 nicksrj/frontend:v1
                 docker login -u $dockerhubuser -p $dockerhubpasswd
