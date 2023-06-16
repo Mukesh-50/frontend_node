@@ -4,6 +4,9 @@ pipeline {
       label 'python'
     }
   }
+  triggers {
+    pollSCM '* * * * *'
+  }
   stages {
     stage('Checkout') {
          steps {
