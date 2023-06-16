@@ -53,7 +53,7 @@ pipeline {
           sh '''
           kubectl get deployment -n prodcatalog-ns
           export REPOSITORY_URI=nicksrj/frontend:v1
-          envsubst < frontend_node/kubespec/frontendnodekubedeploy.yaml | kubectl apply -f -
+          envsubst < kubespec/frontendnodekubedeploy.yaml | kubectl apply -f -
           ATTEMPTS=0
               DEPLOYMENT_NAME=frontend-node
               ROLLOUT_STATUS_CMD="kubectl rollout status deployment/$DEPLOYMENT_NAME -n prodcatalog-ns "
